@@ -2,10 +2,10 @@ const yup = require("yup");
 
 const validating = yup.object().shape({
     email: yup
-      .string("Email invalido")
+      .string()
       .required("Email obrigatório"),
     password: yup
-      .string("Senha invalida")
+      .string()
       .required("Senha obrigatória")
       .min(8,"A senha precisa conter pelo menos 8 digitos"),
   });
