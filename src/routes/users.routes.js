@@ -15,3 +15,5 @@ class UserRouter {
         return userRoutes
     }
 }
+
+module.exports = new UserRouter()

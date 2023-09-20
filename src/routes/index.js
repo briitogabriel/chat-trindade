@@ -6,3 +6,5 @@ const routes = new Router()
 routes.use('/api', [
     routesFromUser(),
 ])
+
+module.exports = routes
