@@ -7,7 +7,7 @@ class UserRouter {
         userRoutes.post('/users', create);
         userRoutes.get('/users', findAll);
         userRoutes.get('/users/:userId', findOne);
-        userRoutes.get('/users/:userId', findAllAdm);
+        userRoutes.get('/usersAdm/', findAllAdm);
         userRoutes.delete('/users/:userId/remove', remove);
         userRoutes.post('/users/:userId/restore', restore);
         userRoutes.patch('/users/:userId/update', update);
