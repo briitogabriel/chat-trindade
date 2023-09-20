@@ -1,4 +1,5 @@
 const { INTEGER, STRING } = require("sequelize");
+const { Chat } = require("../models/Chat");
 const { connection } = require("../database/connection");
 
 const User = connection.define(
@@ -27,5 +28,8 @@ const User = connection.define(
     paranoid: true,
   }
 );
+
+Chat.belongsTo(User, { foreignKey: "userId" });
+User.hasMany(Chat, { foreignKey: "userId" });
 
 module.exports = { User };
