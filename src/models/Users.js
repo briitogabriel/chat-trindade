@@ -9,13 +9,19 @@ const User = connection.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    name: {
+      type: STRING,
+      allowNull: false
+    },
     username: {
       type: STRING,
       allowNull: false,
+      unique: true,
     },
     email: {
       type: STRING,
       allowNull: false,
+      unique: true,
     },
     password: {
       type: STRING,
