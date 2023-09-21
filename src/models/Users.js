@@ -1,6 +1,7 @@
 const { INTEGER, STRING } = require("sequelize");
 const { Chat } = require("../models/Chat");
 const { connection } = require("../database/connection");
+const { encryptPassword}  = require ("../Utils/functions.js")
 
 const User = connection.define(
   "users",
@@ -26,6 +27,10 @@ const User = connection.define(
   {
     undescored: true,
     paranoid: true,
+    hooks: {
+      beforeCreate: encryptPassword,
+      beforeUpdate: encryptPassword,
+    },
   }
 );
 
