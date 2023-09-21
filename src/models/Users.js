@@ -4,7 +4,7 @@ const { connection } = require("../database/connection");
 const User = connection.define(
   "users",
   {
-    userId: {
+    usreId: {
       type: INTEGER,
       primaryKey: true,
       autoIncrement: true,
@@ -30,5 +30,8 @@ const User = connection.define(
     paranoid: true,
   }
 );
+
+Chat.belongsTo(User, { foreignKey: "userId" });
+User.hasMany(Chat, { foreignKey: "userId" });
 
 module.exports = { User };
