@@ -9,10 +9,7 @@ const User = connection.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: STRING,
-      allowNull: false
-    },
+
     username: {
       type: STRING,
       allowNull: false,

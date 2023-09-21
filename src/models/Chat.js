@@ -1,13 +1,15 @@
 const { INTEGER, STRING } = require("sequelize");
 const { connection } = require("../database/connection");
 
-const Chat = connection.define("chats", {
+const Chat = connection.define(
+  "chats",
+  {
     chatId: {
       type: INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    username: {
       type: STRING,
       allowNull: false,
     },
@@ -19,13 +21,13 @@ const Chat = connection.define("chats", {
       allowNull: false,
     },
     userId: {
-        type: INTEGER,
-        references: {
-            model: {
-                tableName: "users"
-            }
-        }
-    }
+      type: INTEGER,
+      references: {
+        model: {
+          tableName: "users",
+        },
+      },
+    },
   },
   {
     undescored: true,
