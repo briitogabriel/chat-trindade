@@ -1,36 +1,28 @@
-const { INTEGER, STRING } = require("sequelize");
-const { connection } = require("../database/connection");
+const {Sequelize} = require('sequelize')
+const connection = require('../database')
+const User = require("./Usersjs");
 
-const Chat = connection.define("chats", {
-    chatId: {
-      type: INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    name: {
-      type: STRING,
+const Message = connection.define(
+  "Message",
+  {
+    text: {
+      type: Sequelize.STRING,
       allowNull: false,
     },
-    description: {
-      type: STRING,
-    },
-    message: {
-      type: STRING,
+    senderId: {
+      type: Sequelize.INTEGER,
       allowNull: false,
     },
-    userId: {
-        type: INTEGER,
-        references: {
-            model: {
-                tableName: "users"
-            }
-        }
-    }
   },
   {
-    undescored: true,
-    paranoid: true,
+    timestamps: true,
+    underscored: true,    
   }
 );
 
-module.exports = { Chat };
+
+
+User.hasMany(Message, { foreignKey: "senderId" });
+Message.belongsTo(User, { foreignKey: "senderId" });
+
+module.exports = Message;
